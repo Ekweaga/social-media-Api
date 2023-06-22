@@ -7,7 +7,8 @@ const UserSchema = new Schema({
  
     username:{
         type:String,
-        unique:[true,"Please provide unique username"]
+        unique:[true,"Please provide unique username"],
+        required:true
       
 
     }
@@ -15,12 +16,14 @@ const UserSchema = new Schema({
 
     email:{
         type:String,
-        unique:[true,"Email must be unique"]
+        unique:[true,"Email must be unique"],
+        required:true
         
         
     },
 password:{
         type:String,
+        required:true
         
       
         

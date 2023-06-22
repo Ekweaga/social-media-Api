@@ -9,18 +9,16 @@ const multer = require('multer');
 
 const userPic = asyncHandler(async(req,res)=>{
    
-
-
-
 exports.uploadImage = catchAsync(async (req, res, next) => {
 
     let cloudinaryResponse;
 
     if (req.file) {
-        cloudinaryResponse = await cloudinary.uploader.upload(req.file.path, {
-            upload_preset: 'trials',
-        });
-    } else {
+        cloudinaryResponse = await cloudinary.uploader.upload(req.file.path, function(err,result){
+            return true
+        } ); } 
+        
+        else {
         return next(new AppError('Please provide a file', 400));
     }
 
@@ -35,6 +33,16 @@ exports.uploadImage = catchAsync(async (req, res, next) => {
 
 })
 
+const followUser = asyncHandler(async(req,res)=>{
+    currentUser = req.user.id
+    const id = req.params.userid
+     const user = User.findOne({_id:id})
+     if(currentUser == user._id){
+        res.status(400).json({message:"You can't follow yourselves"})
+     }
+
+})
 
 
-module.exports={userPic}
+
+module.exports={userPic,followUser}

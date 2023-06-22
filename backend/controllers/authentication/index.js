@@ -9,8 +9,8 @@ const login = asyncHandler(async (req,res)=>{
 
     if(req.method == "POST"){
 
-        console.log(req.body.body)
-     const {email,password} = req.body.body
+      //  console.log(req.body.body)
+     const {email,password} = req.body
      
 
 
@@ -67,8 +67,8 @@ const signup = asyncHandler(async (req,res)=>{
 
     if(req.method == "POST"){
 
-        console.log(req.body.body)
-        const {username,email,password} = req.body.body
+        //console.log(req.body.body)
+        const {username,email,password} = req.body
         const hashedPassword = await bcrypt.hash(password,10)
 
 
@@ -171,7 +171,7 @@ const generateOTP = asyncHandler( async(req,res,next)=>{
               console.log('Email sent: ' + info.response);
             }
           });
-
+            
     return res.status(200).json({message:"OTP sent"})
     }
    }

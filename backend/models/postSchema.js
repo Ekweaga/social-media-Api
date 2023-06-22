@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
  
-    use:{
+    userId:{
         type:String,
         unique:[true,"Please provide unique username"]
       
@@ -13,33 +13,30 @@ const UserSchema = new Schema({
     }
 ,
 
-    email:{
-        type:String,
-        unique:[true,"Email must be unique"]
-        
-        
-    },
-password:{
-        type:String,
-        
-      
-        
-    },
-
-    userImage:{
-        type:String
-    },
-
-    followers:{
+   postTitle:{
+    type:String
+   }
+,
+postDesc:{
+    type:String
+},
+    likes:{
         type:[String],
         default:[]
     },
+    postImage:{
+            type:String
+    },
 
-    following:{
+    dislikes:{
         type:[String],
         default:[]
     }
-   
+   ,
+   comments:{
+    type:[String],
+    default:[]
+   }
    
 })
 
